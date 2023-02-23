@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      /* Style pour le corps de la page */
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f2f2f2;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+
+      /* Style pour le formulaire */
+      form {
+        background-color: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      /* Style pour les titres des questions */
+      h1 {
+        font-size: 24px;
+        margin-bottom: 10px;
+      }
+
+      /* Style pour les réponses */
+      input[type="radio"] {
+        margin-right: 10px;
+      }
+
+      /* Style pour le bouton */
+      button {
+        position: absolute; /* Ajouter une position absolue pour le bouton */
+        bottom: 10px; /* Placer le bouton en bas du formulaire */
+        margin-top: 20px; /* Ajouter un espace supplémentaire entre le formulaire et le bouton */
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        background-color: #0077cc;
+        color: white;
+        font-size: 16px;
+        cursor: pointer;
+      }
+
+      /* Style pour le bouton quand on passe la souris dessus */
+      button:hover {
+        background-color: #0066b2;
+      }
+
+    </style>
+  </head>
+  <body>
+    <form>
+      <% let visited = [] %>
+      <% locals.questions.forEach(function(question) { %>
+        <% if(!visited.includes(question.question_id)) { %>
+          <h1 id="<%= question.question_id %>"><%= question.question %></h1>
+          <% visited.push(question.question_id) %>
+          <% locals.questions.forEach(function(quest) { %>
+            <% if(question.question_id == quest.question_id) { %>
+              <input type="radio" name="<%= quest.question %>" value="<%= quest.correct %>"><%= quest.answer %></input>
+            <% }; %>
+          <% }); %>
+        <% }; %>
+      <% }); %>
+    </form>
+    <button type="button" onclick="submitForm()">Submit</button>
+  </body>
+  <script>
+    function submitForm() {
+      const inputs = document.querySelectorAll('input[type="radio"]:checked');
+      let selectedValues = Array.from(inputs).map(input => parseInt(input.getAttribute('value')));
+      let sum = selectedValues.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
+      console.log(sum);
+      window.location.href = "http://www.w3schools.com";
+    }
+  </script>
+</html>

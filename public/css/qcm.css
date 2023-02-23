@@ -1,0 +1,45 @@
+/* Style pour le corps de la page */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f2f2f2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* Style pour le formulaire */
+form {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Style pour les titres des questions */
+h1 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+/* Style pour les réponses */
+input[type="radio"] {
+  margin-right: 10px;
+}
+
+/* Style pour le bouton */
+button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #0077cc;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* Style pour le bouton quand on passe la souris dessus */
+button:hover {
+  background-color: #0066b2;
+}

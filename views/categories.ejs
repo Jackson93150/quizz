@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/category.css">
+  </head>
+  <body>
+    <h1>Choose your Category</h1>
+    <div class="card-container">
+      <% locals.categories.forEach(function(category) { %>
+      <div class="card">
+        <h2><%= category %></h2>
+      </div>
+      <% }); %>
+    </div>
+  </body>
+  <script>
+    let cards = document.querySelectorAll(".card");
+    for (let i = 0; i < cards.length; i++) {
+      let r = Math.floor(Math.random() * 256);
+      let g = Math.floor(Math.random() * 256);
+      let b = Math.floor(Math.random() * 256);
+      cards[i].style.backgroundColor = "rgb(" + r + ", " + g + ", " + b + ")";
+      cards[i].addEventListener('click', function() {
+        window.location.href = this.querySelector('h2').textContent + '/qcm'
+        console.log(this.querySelector('h2').textContent);
+      });
+    }
+  </script>
+</html>
